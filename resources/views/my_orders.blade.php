@@ -35,14 +35,15 @@
                             <td class="black_color AvenirNextWorld f17">{{ $order->date }}</td>
                             <td class="black_color AvenirNextWorld f17">{{ $order->amount }} DZ</td>
                             <td class="black_color AvenirNextWorld f17">{{ $order->address }}</td>
-                            <td class="black_color AvenirNextWorld f17">Livré</td>
+                            <td class="black_color AvenirNextWorld f17 text-capitalize">{{ $order->status }}</td>
                         </tr>
-                        <tr>
+                        <tr class="customTr">
                             <td colspan="6" class="hiddenRow">
                                 <div id="collapse{{ $order->id }}" class="accordian-body collapse">
                                     @foreach ($order->items as $item)
                                         <div class="pl-3 mb-3">
-                                            <a href="" class="black_color avenit AvenirNextWorld f17 custom_hyper">
+                                            <a href=""
+                                                class="black_color avenit AvenirNextWorld f17 custom_hyper">
                                                 <span class="mr-2">{{ $item->qnt }} </span>
                                                 <img src="/uploads/products/{{ $item->image_name }}" alt=""
                                                     class="mr-2 item_img">

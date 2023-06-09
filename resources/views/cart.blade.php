@@ -49,7 +49,14 @@
                             </tbody>
                         </table>
                     </div>
-                    @include('upload.form')
+                    <div class="align-items-center" id='need_prescription'>
+                        <span class="AvenirNextWorld f12 orng_color"> Un des médicaments que vous étes entrain de
+                            commander ne
+                            peut pas être
+                            vendu sans ordonnance, veuillez soumettre votre ordonnance pour continuer
+                        </span>
+                        @include('upload.form')
+                    </div>
                 </div>
                 <div class="col-md-4 h-100 basket_container">
                     <div class="p-4">
@@ -99,12 +106,13 @@
     <script src="https://kit.fontawesome.com/df2a0808c5.js" crossorigin="anonymous"></script>
     <script>
         var product_array = JSON.parse(localStorage.getItem('product_array'));
-        const found = product_array.some(el => el.need_presecription === 0);
-        product_array.forEach(element => {
-            console.log(element.need_presecription);
-        });
-
+        const found = product_array?.some(el => el.need_presecription === 1);
         console.log(found);
+        if (found === true) {
+            $('#need_prescription').addClass('d-flex');
+        } else {
+            $('#need_prescription').addClass('d-none');
+        }
         var sub_total = 0;
         append();
 
@@ -115,21 +123,38 @@
                 value.description = ""
                 value.sub_total = value.price * value.qnt;
                 sub_total += value.sub_total;
-                $('#exampleid').append("<tr class='clickable'>\
-                                                										<td><img class='img_product' src=/uploads/products/>" + value.image_name +
-                    " alt=''> " + "</td>\
-                                                										<td class='AvenirNextWorld f14 black_color'>" + value.title + "</td>\
-                                                										<td class='AvenirNextWorld f14 black_color'>" + value.price + " DZ </td>\
-                                                										<td class='AvenirNextWorld f14 black_color'>" + value.qnt + "</td>\
-                                                										<td class='AvenirNextWorld f14 black_color'>" + value.sub_total +
+                $('#exampleid').append(
+                    "<tr class='clickable'>\
+                                                                                                                                                                                                                                                                                										<td><img class='img_product' src=/uploads/products/" +
+                    value
+                    .image_name +
+                    " alt=''> " +
+                    "</td>\
+                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                    value
+                    .title +
+                    "</td>\
+                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                    value
+                    .price +
                     " DZ </td>\
-                                                										<td class='AvenirNextWorld f14 black_color'>\
-                                                                                            <button class='btn p-0 delete_item' id='delete_item' value=" +
-                    value.id + ">\
-                                                                                                <i aria-hidden='true'  class='melawell-icon- melawell-icon-trash blue_color'></i>\
-                                                                                            </button> \
-                                                                                        </td>\
-                                                </tr>");
+                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                    value
+                    .qnt +
+                    "</td>\
+                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                    value
+                    .sub_total +
+                    " DZ </td>\
+                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>\
+                                                                                                                                                                                                                                                                                                                            <button class='btn p-0 delete_item' id='delete_item' value=" +
+                    value.id +
+                    ">\
+                                                                                                                                                                                                                                                                                                                                <i aria-hidden='true'  class='melawell-icon- melawell-icon-trash blue_color'></i>\
+                                                                                                                                                                                                                                                                                                                            </button> \
+                                                                                                                                                                                                                                                                                                                        </td>\
+                                                                                                                                                                                                                                                                                </tr>"
+                );
             })
         }
         $('#sub-total').text(sub_total + ' DZ');
@@ -145,6 +170,7 @@
                 var form = document.getElementById('myForm');
                 var formData = new FormData(form);
                 formData.append('data', JSON.stringify(product_array));
+                formData.append('status', "en-attente");
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', '/place_order', true);
                 xhr.onload = function() {
@@ -156,20 +182,27 @@
                         console.log("error");
                     }
                 };
-                xhr.send(formData);
-                // $.ajax({
-                //     url: '/place_order',
-                //     type: 'POST',
-                //     data: {
-                //         data: formData,
-                //     },
-                //     success: function(response) {
+                if (found === true) {
+                    if (document.getElementById('prescription_image').value != "") {
+                        xhr.send(formData)
+                    }
+                } else {
+                    xhr.send(formData);
+                }
+                // found === true && document.getElementById('prescription_image').value != "" ? xhr.send(formData) :
+                $.ajax({
+                    url: '/place_order',
+                    type: 'POST',
+                    data: {
+                        data: formData,
+                    },
+                    success: function(response) {
 
-                //     },
-                //     error: function(error) {
+                    },
+                    error: function(error) {
 
-                //     }
-                // });
+                    }
+                });
             } else {
                 window.location.href = "/login"
             }

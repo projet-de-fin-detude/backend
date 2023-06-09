@@ -51,6 +51,10 @@
     font-size: 14px;
 }
 
+.f12 {
+    font-size: 12px;
+}
+
 .f10 {
     font-size: 10px;
 }
@@ -387,9 +391,11 @@ i {
 .melawell-icon-user:before {
     content: "\e058";
 }
+
 .melawell-icon-search:before {
     content: "\e046";
 }
+
 .sm_footer_icons {
     width: 30px;
     height: 30px;
@@ -498,8 +504,12 @@ td,
     height: 80px;
 }
 
-[aria-expanded=false]+.customTr {
+.accordion-toggle+.customTr {
     display: none;
+}
+
+[aria-expanded=true]+.customTr {
+    display: block !important;
 }
 
 .arrow {
@@ -518,6 +528,7 @@ tr[aria-expanded=true] .right {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
+
 .arrow_btn {
     width: 28px;
     height: 28px;
@@ -527,23 +538,29 @@ tr[aria-expanded=true] .right {
     align-items: center;
     border-radius: 50%;
 }
+
 .item_img {
     width: 80px;
     height: 100%;
     object-fit: cover;
 }
+
 .custom_hyper:hover {
     color: #000000 !important;
 }
-tr[aria-expanded=false]+tr{
+
+tr[aria-expanded=false]+tr {
     display: none;
 }
-.no-wrap{
- flex-wrap: nowrap !important;
+
+.no-wrap {
+    flex-wrap: nowrap !important;
 }
-.dashboardBack{
-background-color: #EFEDFF;
+
+.dashboardBack {
+    background-color: #EFEDFF;
 }
+
 .searchBox {
     background: #fff;
     height: 40px;
@@ -551,14 +568,14 @@ background-color: #EFEDFF;
 
 }
 
-.searchBox:hover > .searchInput {
+.searchBox:hover>.searchInput {
     width: 240px;
     padding: 0 6px;
 }
 
-.searchBox:hover > .searchButton {
-  /* background: white; */
-  color : #0f62f9;
+.searchBox:hover>.searchButton {
+    /* background: white; */
+    color: #0f62f9;
 }
 
 .searchButton {
@@ -576,10 +593,10 @@ background-color: #EFEDFF;
 }
 
 .searchInput {
-    border:none;
+    border: none;
     background: none;
-    outline:none;
-    float:left;
+    outline: none;
+    float: left;
     padding: 0;
     font-size: 16px;
     transition: 0.4s;
@@ -589,8 +606,8 @@ background-color: #EFEDFF;
 }
 
 @media screen and (max-width: 620px) {
-.searchBox:hover > .searchInput {
-    width: 150px;
-    padding: 0 6px;
-}
+    .searchBox:hover>.searchInput {
+        width: 150px;
+        padding: 0 6px;
+    }
 }

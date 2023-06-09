@@ -35,6 +35,12 @@ class place_order_controller extends Controller
             try {
                 $response = DB::table('medecines_orders')->insert($data);
                 if ($response) {
+                    foreach ($productArray as $product) {
+                        $product->quantity = $product->quantity - $product->qnt;
+                        DB::table('medecines')->where('id', $product->id)->update(array(
+                            'quantity' => $product->quantity,
+                        ));
+                    }
                     $response = ["message" => "user  placed  successfully"];
                     $id = DB::getPdo()->lastInsertId();
                     $data["id"] = $id;
