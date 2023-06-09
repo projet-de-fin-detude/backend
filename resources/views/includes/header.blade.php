@@ -40,7 +40,9 @@
             <form class="mb-0" action="{{ route('products') }}" method="POST">
                 @csrf
                 <div class="searchBox">
-                    <input class="searchInput"type="text"  name="search" value="{{ request('search') }}"class=" AvenirNextWorld f16" placeholder="Rechercher un médicament">
+                    <input class="searchInput"type="text" name="search"
+                        value="{{ request('search') }}"class=" AvenirNextWorld f16"
+                        placeholder="Rechercher un médicament">
                     <button class="searchButton" href="#">
                         <i aria-hidden="true" class="f25 melawell-icon-search"></i>
                     </button>
@@ -72,7 +74,7 @@
 
                             <!-- في حالة المستخدم مسجل الدخول -->
                             @if (Auth::check())
-                                <a href="{{ route('user.logout') }}">Déconnexion</a>
+                                <a class="clickable" id="disconnect">Déconnexion</a>
                             @else
                                 <a href="{{ route('login') }}">Connexion</a><span class="hidden1024down"> / </span>
                                 <a href="{{ route('register') }}">Creer un compte</a>
@@ -93,4 +95,22 @@
     document.getElementById("sub_total").innerHTML = sub_total + ' DZ';
     var basket = product_array
     document.getElementById("basket_header").innerHTML = basket?.length ? basket.length : 0;
+    $(document).ready(function() {
+        $('#disconnect').click(function($event) {
+            console.log('====================================');
+            console.log('disconnect');
+            console.log('====================================');
+            $.ajax({
+                url: "{{ route('user.logout') }}",
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(data) {
+                    localStorage.clear()
+                    window.location.href = "{{ route('login') }}"
+                }
+            });
+        })
+    })
 </script>

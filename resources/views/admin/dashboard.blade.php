@@ -13,34 +13,34 @@
 </head>
 
 <body>
-   <div class="row no-gutters h-100">
-    <div class="col-md-2 dashboardBack">
-        <ul class="nav flex-column no-wrap">
-            <li class="nav-item mb-5">
-                <a href="/" class="d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('assets/img/logo.svg') }}" alt="" class="mr-2">
-                    <span class="f20 deep_grey fw_700 ">PharmaElchifaa</span>
-                </a>
-              </li>
-            <li class="nav-item mb-3">
-              <a class="nav-link AvenirNextWorld" href="#">Analytique</a>
-            </li>
-            {{-- <li class="nav-item mb-3">
+    <div class="row no-gutters h-100">
+        <div class="col-md-2 dashboardBack">
+            <ul class="nav flex-column no-wrap">
+                <li class="nav-item mb-5">
+                    <a href="/" class="d-flex align-items-center justify-content-center">
+                        <img src="{{ asset('assets/img/logo.svg') }}" alt="" class="mr-2">
+                        <span class="f20 deep_grey fw_700 ">PharmaElchifaa</span>
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link AvenirNextWorld" href="#">Analytique</a>
+                </li>
+                {{-- <li class="nav-item mb-3">
               <a class="nav-link AvenirNextWorld" href="{{ route('admin.index') }}">Clients</a>
             </li> --}}
-            <li><a href="{{ route('admin.clients') }}">Clients</a></li>
-            <li class="nav-item mb-3">
-              <a class="nav-link AvenirNextWorld" href="#">Commandes</a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link AvenirNextWorld" href="{{ route('admin.products') }}">Médicaments</a>
-              </li>
-          </ul>
+                <li><a href="{{ route('admin.clients') }}">Clients</a></li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link AvenirNextWorld" href="#">Commandes</a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link AvenirNextWorld" href="{{ route('admin.products') }}">Médicaments</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <router-view></router-view>
+        </div>
     </div>
-    <div class="col-md-10">
-        <router-view></router-view>
-    </div>
-   </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

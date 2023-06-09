@@ -2,10 +2,10 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
-use Hash;
 
 class CustomAuthController extends Controller
 {
@@ -24,14 +24,14 @@ class CustomAuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             Session::put('user', Auth::user());
-           // Session::put('email', Auth::user()->email);
-           // Session::put('id', Auth::user()->id);
-           if (Auth::user()->isAdmin()) {
-            return redirect()->intended('http://localhost:4200/medecines');
-        } else {
-            return redirect()->intended('/profile')
-                ->with(["credentials",$credentials]);
-        }
+            // Session::put('email', Auth::user()->email);
+            // Session::put('id', Auth::user()->id);
+            if (Auth::user()->isAdmin()) {
+                return redirect()->intended('http://localhost:4200/medecines');
+            } else {
+                return redirect()->intended('/profile')
+                    ->with(["credentials", $credentials]);
+            }
         }
         return redirect("login")->withSuccess('Login details are not valid');
     }
@@ -60,17 +60,16 @@ class CustomAuthController extends Controller
             'phone_number' => $request->phone_number,
             'address' => $request->address,
             'email' => $request->email,
-            'password' => Hash::make($request['password'])
+            'password' => Hash::make($request['password']),
 
         );
 
-            // تحقق إذا كان الحساب مشرف (admin)
-            if ($request->has('is_admin') && $request->is_admin) {
-                $data['role_id'] = 1; // قيمة الدور المخصصة للمشرف (admin)
-            } else {
-                $data['role_id'] = 2; // قيمة الدور المخصصة للمستخدم العادي
-            }
-
+        // تحقق إذا كان الحساب مشرف (admin)
+        if ($request->has('is_admin') && $request->is_admin) {
+            $data['role_id'] = 1; // قيمة الدور المخصصة للمشرف (admin)
+        } else {
+            $data['role_id'] = 2; // قيمة الدور المخصصة للمستخدم العادي
+        }
 
         try {
             $response = DB::table('users')->insert($data);
@@ -91,6 +90,7 @@ class CustomAuthController extends Controller
 
     public function signOut()
     {
+        dd("signout");
         Session::flush();
         Auth::logout();
 
@@ -99,13 +99,18 @@ class CustomAuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
 
+        Auth::logout();
+        echo '
+        console.log("cleared");
+
+        <script>localStorage.clear();
+        sessionStorage.clear();
+        </script>';
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect('/login');
     }
-
 
 };

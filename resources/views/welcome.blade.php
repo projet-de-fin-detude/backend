@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="shortcut icon" href="{{asset('assets/img/logo.svg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.svg') }}" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     @include('includes.header')
     <section>
@@ -85,7 +87,8 @@
                 <div class="swiper-wrapper">
                     @foreach ($medecines as $medecine)
                         <a href="product/{{ $medecine->id }}" class="swiper-slide p-3">
-                            <img src="{{ asset('uploads/products/' . $medecine->image_name) }}" alt="" class="w-100">
+                            <img src="{{ asset('uploads/products/' . $medecine->image_name) }}" alt=""
+                                class="w-100">
                             <div class="black_color f18 AvenirNextWorld fw_700"> {{ $medecine->title }}</div>
                             <div class="d-flex justify-content-between mt-2 align-items-center">
                                 <div class=" f15 AvenirNextWorld fw_700"> <span
@@ -149,7 +152,7 @@
                         </div>
 
                     </div>
-                 </div>
+                </div>
                 <div class="col-md-3 text-center">
                     <div class="elementor-icon-wrapper py-5">
                         <div class="elementor-icon">
@@ -276,7 +279,7 @@
             <div class="container py-5 d-md-flex justify-content-between">
                 <div class="d-md-flex">
                     <div class="d-flex align-items-center mb-1">
-                        <img src=" {{asset('assets/img/logo.svg')}}" alt="">
+                        <img src=" {{ asset('assets/img/logo.svg') }}" alt="">
                         <span class="aven AvenirNextWorld f28 text-white ml-3">Elchifaa</span>
                     </div>
                     <div class="ml-md-5 d-flex align-items-center mb-1">
@@ -284,7 +287,8 @@
                             <i aria-hidden="true" class="melawell-icon- melawell-icon-messages-2"></i>
                         </div>
                         <div class="ml-3">
-                            <span class="grey_color AvenirNextWorld f16 d-block">Vous avez des questions ? Appelez-nous 24h/24 et 7j/7 !</span>
+                            <span class="grey_color AvenirNextWorld f16 d-block">Vous avez des questions ? Appelez-nous
+                                24h/24 et 7j/7 !</span>
                             <span class="textwhi text-white f18 AvenirNextWorld">+213 699256736</span>
                         </div>
                     </div>
@@ -292,11 +296,11 @@
                 <div>
                     <form class="form-inline">
                         <div class="form-group">
-                          <input type="text" class="form-control mr-3 mb-1"  placeholder="Votre adresse mail">
-                          <button class="btn text-white f16 AvenirNextWorld shop_now_btn mb-1">S'inscrire</button>
+                            <input type="text" class="form-control mr-3 mb-1" placeholder="Votre adresse mail">
+                            <button class="btn text-white f16 AvenirNextWorld shop_now_btn mb-1">S'inscrire</button>
                         </div>
 
-                      </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -304,9 +308,9 @@
     @include('includes.footer')
     <script src="{{ asset('js/init_map.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+    </script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
@@ -315,8 +319,9 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH1gP_K3PKyrGZxadhLVsixfEYVCIy3UI&callback=initMap">
     </script>
-<script src="https://kit.fontawesome.com/df2a0808c5.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/df2a0808c5.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
 </body>
+
 </html>

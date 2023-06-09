@@ -611,3 +611,7 @@ tr[aria-expanded=false]+tr {
         padding: 0 6px;
     }
 }
+
+.clickable {
+    cursor: pointer;
+}

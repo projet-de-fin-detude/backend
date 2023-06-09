@@ -14,6 +14,7 @@
         href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
         integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easyzoom@2.6.0/css/easyzoom.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -60,9 +61,9 @@
     </section>
     @include('includes.footer')
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+    </script> --}}
     <script src="{{ asset('js/easyzoom.js') }}"></script>
     <script></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
@@ -75,7 +76,7 @@
     </script>
     <script src="https://kit.fontawesome.com/df2a0808c5.js" crossorigin="anonymous"></script>
     <script>
-        var product =@json($product)
+        var product = @json($product)
     </script>
     <script src="{{ asset('js/product.js') }}"></script>
 

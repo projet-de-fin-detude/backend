@@ -125,35 +125,35 @@
                 sub_total += value.sub_total;
                 $('#exampleid').append(
                     "<tr class='clickable'>\
-                                                                                                                                                                                                                                                                                										<td><img class='img_product' src=/uploads/products/" +
+                                                                                                                                                                                                                                                                                    										<td><img class='img_product' src=/uploads/products/" +
                     value
                     .image_name +
                     " alt=''> " +
                     "</td>\
-                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                                                                                                                                                                                                                                                                                    										<td class='AvenirNextWorld f14 black_color'>" +
                     value
                     .title +
                     "</td>\
-                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                                                                                                                                                                                                                                                                                    										<td class='AvenirNextWorld f14 black_color'>" +
                     value
                     .price +
                     " DZ </td>\
-                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                                                                                                                                                                                                                                                                                    										<td class='AvenirNextWorld f14 black_color'>" +
                     value
                     .qnt +
                     "</td>\
-                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>" +
+                                                                                                                                                                                                                                                                                    										<td class='AvenirNextWorld f14 black_color'>" +
                     value
                     .sub_total +
                     " DZ </td>\
-                                                                                                                                                                                                                                                                                										<td class='AvenirNextWorld f14 black_color'>\
-                                                                                                                                                                                                                                                                                                                            <button class='btn p-0 delete_item' id='delete_item' value=" +
+                                                                                                                                                                                                                                                                                    										<td class='AvenirNextWorld f14 black_color'>\
+                                                                                                                                                                                                                                                                                                                                <button class='btn p-0 delete_item' id='delete_item' value=" +
                     value.id +
                     ">\
-                                                                                                                                                                                                                                                                                                                                <i aria-hidden='true'  class='melawell-icon- melawell-icon-trash blue_color'></i>\
-                                                                                                                                                                                                                                                                                                                            </button> \
-                                                                                                                                                                                                                                                                                                                        </td>\
-                                                                                                                                                                                                                                                                                </tr>"
+                                                                                                                                                                                                                                                                                                                                    <i aria-hidden='true'  class='melawell-icon- melawell-icon-trash blue_color'></i>\
+                                                                                                                                                                                                                                                                                                                                </button> \
+                                                                                                                                                                                                                                                                                                                            </td>\
+                                                                                                                                                                                                                                                                                    </tr>"
                 );
             })
         }

@@ -10,7 +10,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Login</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="shortcut icon" href="{{asset('assets/img/logo.svg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.svg') }}" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
         </div>
         <div class="container my-5">
             <div class="row">
-         
+
                 <div class="col-md-6 ">
                     @foreach ($errors as $error)
                         <p>please choose a region</p>
@@ -43,8 +44,8 @@
                         </div>
                         <div class="form-group mt-3">
                             <label for="password"class="f14 AvenirNextWorld black_color">Mot de pass</label>
-                            <input type="password" class="form-control f15 AvenirNextWorld black_color"
-                                id="password" name="password" placeholder="Entre votre mot de passe">
+                            <input type="password" class="form-control f15 AvenirNextWorld black_color" id="password"
+                                name="password" placeholder="Entre votre mot de passe">
                         </div>
                         <div class="form-group mt-3 form-check d-flex align-items-center">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -52,15 +53,14 @@
                                 for="exampleCheck1">Remember me</label>
                         </div>
                         <button type="submit" class="btn shop_now_btn w-100 text-white">connexion</button>
-                       
+
                     </form>
                 </div>
 
             </div>
         </div>
     </section>
-    <script>
-    </script>
+    <script></script>
     {{-- <main class="login-form">
         <div class="cotainer">
             <div class="row justify-content-center">
@@ -100,7 +100,7 @@
             </div>
         </div>
     </main> --}}
-   
+
 
 </body>
 
